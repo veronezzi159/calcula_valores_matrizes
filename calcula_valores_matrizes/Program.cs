@@ -1,4 +1,4 @@
-﻿int qtd_linhas = 0,  qtd_colunas = 0, escolha = 0;
+﻿int qtd_linhas = 0,  qtd_colunas = 0, opcao = 0;
 
 void imprimirMatriz(float[,] matriz, string titulo)
 {
@@ -14,8 +14,9 @@ void imprimirMatriz(float[,] matriz, string titulo)
     Console.WriteLine();
     Console.ReadLine();
 }
-void menu()
+int menu()
 {
+    int escolha = 0; 
     Console.Clear();
 
     Console.WriteLine("Escolha qual operação deseja realizar");
@@ -25,6 +26,7 @@ void menu()
     Console.WriteLine("4 - Divisão");
     Console.WriteLine("digite qualque numero diferente pra encerrar");
     escolha = int.Parse( Console.ReadLine() );
+    return escolha;
 }
 void encerrar()
 {
@@ -107,7 +109,7 @@ void dividir_matrizes(float[,] div, float[,] matriz1, float[,] matriz2)
 
 do
 {
-    menu();
+    opcao = menu();
     escolher_dimensoes();
 
     float[,] matriz1 = new float[qtd_linhas, qtd_colunas], matriz2 = new float[qtd_linhas, qtd_colunas], matriz_soma = new float[qtd_linhas, qtd_colunas];
@@ -118,7 +120,7 @@ do
     sortear_matriz(matriz1, "Matriz 1");
     sortear_matriz(matriz2, "Matriz 2");
        
-    switch (escolha)
+    switch (opcao)
     {
         case 1:
             somar_matrizes(matriz_soma, matriz1, matriz2);
@@ -141,4 +143,4 @@ do
             break;
     }
 
-} while (escolha > 0 && escolha < 5);
+} while (opcao > 0 && escolha < 5);
