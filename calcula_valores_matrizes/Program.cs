@@ -8,19 +8,22 @@ void imprimirMatriz(float[,] matriz, string titulo)
         Console.WriteLine();
         for (int colunas = 0; colunas < qtd_colunas; colunas++)
         {
-            Console.Write($"{matriz[linhas,colunas]} ");
+            Console.Write(matriz[linhas,colunas] + " ");
         }
     }
     Console.WriteLine();
+    Console.ReadLine();
 }
 void menu()
 {
+    Console.Clear();
+
     Console.WriteLine("Escolha qual operação deseja realizar");
     Console.WriteLine("1 - Soma");
     Console.WriteLine("2 - Subtração");
     Console.WriteLine("3 - Multiplicação");
     Console.WriteLine("4 - Divisão");
-    Console.WriteLine("digite qualque numero pra encerrar");
+    Console.WriteLine("digite qualque numero diferente pra encerrar");
     escolha = int.Parse( Console.ReadLine() );
 }
 void encerrar()
@@ -48,9 +51,10 @@ void sortear_matriz(float[,] matriz)
         for (int colunas = 0; colunas < qtd_colunas; colunas++)
         {
             matriz[linhas, colunas] = new Random().Next(0, 101);
-            Console.WriteLine(matriz[linhas,colunas]);
+            Console.Write(matriz[linhas,colunas] + " ");
         }
     }
+    Console.WriteLine();
 }
 void somar_matrizes(float[,] soma, float[,] matriz1, float[,] matriz2)
 {
@@ -100,36 +104,44 @@ void dividir_matrizes(float[,] div, float[,] matriz1, float[,] matriz2)
     }
 }
 
-menu();
-escolher_dimensoes();
-
-float[,] matriz1 = new float[qtd_linhas, qtd_colunas], matriz2 = new float[qtd_linhas, qtd_colunas], matriz_soma = new float[qtd_linhas, qtd_colunas];
-float[,] matriz_sub = new float[qtd_linhas, qtd_colunas];
-float[,] matriz_div = new float[qtd_linhas, qtd_colunas];
-float[,] matriz_mult = new float[qtd_linhas, qtd_colunas];
-
-sortear_matriz(matriz1);
-sortear_matriz(matriz2);
-
-imprimirMatriz(matriz1, "Matriz 1");
-
-imprimirMatriz(matriz2, "Matriz 2");
-
-switch (escolha)
+do
 {
-    case 1: somar_matrizes(matriz_soma, matriz1, matriz2);
-            imprimirMatriz(matriz_soma, "Matriz Soma: ");
-        break;
-    case 2: subtrair_matrizes(matriz_sub, matriz1, matriz2);
-            imprimirMatriz(matriz_sub, "Matriz Subtração");
-        break;
-    case 3: multiplicar_matrizes(matriz_mult, matriz1, matriz2);
-            imprimirMatriz(matriz_mult, "Matriz Multiplicada");
-        break;
-    case 4: dividir_matrizes(matriz_div, matriz1, matriz2);
-            imprimirMatriz(matriz_div, "Matriz Dividida");
-        break;
-    default: encerrar();
-        break;
-}
+    menu();
+    escolher_dimensoes();
 
+    float[,] matriz1 = new float[qtd_linhas, qtd_colunas], matriz2 = new float[qtd_linhas, qtd_colunas], matriz_soma = new float[qtd_linhas, qtd_colunas];
+    float[,] matriz_sub = new float[qtd_linhas, qtd_colunas];
+    float[,] matriz_div = new float[qtd_linhas, qtd_colunas];
+    float[,] matriz_mult = new float[qtd_linhas, qtd_colunas];
+
+    sortear_matriz(matriz1);
+    sortear_matriz(matriz2);
+
+    imprimirMatriz(matriz1, "Matriz 1");
+
+    imprimirMatriz(matriz2, "Matriz 2");
+
+    switch (escolha)
+    {
+        case 1:
+            somar_matrizes(matriz_soma, matriz1, matriz2);
+            imprimirMatriz(matriz_soma, "Matriz Soma: ");
+            break;
+        case 2:
+            subtrair_matrizes(matriz_sub, matriz1, matriz2);
+            imprimirMatriz(matriz_sub, "Matriz Subtração");
+            break;
+        case 3:
+            multiplicar_matrizes(matriz_mult, matriz1, matriz2);
+            imprimirMatriz(matriz_mult, "Matriz Multiplicada");
+            break;
+        case 4:
+            dividir_matrizes(matriz_div, matriz1, matriz2);
+            imprimirMatriz(matriz_div, "Matriz Dividida");
+            break;
+        default:
+            encerrar();
+            break;
+    }
+
+} while (escolha > 0 && escolha < 5);
