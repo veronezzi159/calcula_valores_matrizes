@@ -1,9 +1,7 @@
 ﻿int qtd_linhas = 0,  qtd_colunas = 0, escolha = 0;
 
-float[,] matriz1 = new float[qtd_linhas, qtd_colunas], matriz2 = new float[qtd_linhas, qtd_colunas], matriz_soma = new float[qtd_linhas, qtd_colunas];
-float[,] matriz_sub = new float[qtd_linhas, qtd_colunas];
-float[,] matriz_div = new float[qtd_linhas, qtd_colunas];
-float[,] matriz_mult = new float[qtd_linhas, qtd_colunas];
+
+
 
 void imprimirMatriz(float[,] matriz, string titulo)
 {
@@ -49,9 +47,11 @@ void sortear_matriz(float[,] matriz)
 {
     for (int linhas= 0; linhas < qtd_linhas; linhas++)
     {
+        Console.WriteLine();
         for (int colunas = 0; colunas < qtd_colunas; colunas++)
         {
             matriz[linhas, colunas] = new Random().Next(0, 101);
+            Console.WriteLine(matriz[linhas,colunas]);
         }
     }
 }
@@ -104,6 +104,13 @@ void dividir_matrizes(float[,] div, float[,] matriz1, float[,] matriz2)
 }
 
 menu();
+escolher_dimensoes();
+
+float[,] matriz1 = new float[qtd_linhas, qtd_colunas], matriz2 = new float[qtd_linhas, qtd_colunas], matriz_soma = new float[qtd_linhas, qtd_colunas];
+float[,] matriz_sub = new float[qtd_linhas, qtd_colunas];
+float[,] matriz_div = new float[qtd_linhas, qtd_colunas];
+float[,] matriz_mult = new float[qtd_linhas, qtd_colunas];
+
 sortear_matriz(matriz1);
 sortear_matriz(matriz2);
 
