@@ -1,8 +1,5 @@
 ﻿int qtd_linhas = 0,  qtd_colunas = 0, escolha = 0;
 
-
-
-
 void imprimirMatriz(float[,] matriz, string titulo)
 {
     Console.WriteLine($"\n {titulo}");
