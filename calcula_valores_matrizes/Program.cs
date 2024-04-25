@@ -66,7 +66,6 @@ void somar_matrizes(float[,] soma, float[,] matriz1, float[,] matriz2)
             soma[linhas, colunas] = matriz1[linhas, colunas] + matriz2[linhas, colunas];
         }
     }
-    imprimirMatriz(soma, "Matriz Soma: ");
 }
 void subtrair_matrizes(float[,] sub, float[,] matriz1, float[,] matriz2)
 {
@@ -77,7 +76,6 @@ void subtrair_matrizes(float[,] sub, float[,] matriz1, float[,] matriz2)
             sub[linhas, colunas] = matriz1[linhas, colunas] - matriz2[linhas, colunas];
         }
     }
-    imprimirMatriz(sub, "Matriz Subtração");
 }
 void multiplicar_matrizes(float[,] mult, float[,] matriz1, float[,] matriz2)
 {
@@ -88,7 +86,6 @@ void multiplicar_matrizes(float[,] mult, float[,] matriz1, float[,] matriz2)
             mult[linhas, colunas] = matriz1[linhas, colunas] * matriz2[linhas, colunas];
         }
     }
-    imprimirMatriz(mult, "Matriz Multiplicada");
 }
 void dividir_matrizes(float[,] div, float[,] matriz1, float[,] matriz2)
 {
@@ -106,7 +103,6 @@ void dividir_matrizes(float[,] div, float[,] matriz1, float[,] matriz2)
             }
         }
     }
-    imprimirMatriz(div, "Matriz Dividida");
 }
 
 do
@@ -126,19 +122,19 @@ do
     {
         case 1:
             somar_matrizes(matriz_soma, matriz1, matriz2);
- 
+            imprimirMatriz(matriz_soma, "Matriz Soma: ");
             break;
         case 2:
             subtrair_matrizes(matriz_sub, matriz1, matriz2);
- 
+            imprimirMatriz(matriz_sub, "Matriz Subtração");
             break;
         case 3:
             multiplicar_matrizes(matriz_mult, matriz1, matriz2);
- 
+            imprimirMatriz(matriz_mult, "Matriz Multiplicada");
             break;
         case 4:
             dividir_matrizes(matriz_div, matriz1, matriz2);
-
+            imprimirMatriz(matriz_div, "Matriz Dividida");
             break;
         default:
             encerrar();
